@@ -79,6 +79,7 @@ end
 
 puts array.inspect
 
+
 # RETORNO => [1, 4, 9, 16]
 
 #### Parece bem similar ao nosso exemplo anterior, no entanto existem duas diferenças. Primeiro, nós estamos passando um argumento ampersand chamado &code. Esse argumento é, convenientemente suficiente, o nosso block. O segundo é o meio da nossa definição de método iterate!, no qual em vez de usar o yield, mandamos um chamado para todos os nossos blocos de códigos. O resultado é exatamente o mesmo. No entanto, se isso é verdade, por que então temos essa diferença em sintaxe? Bom, ela nos ensina um pouco mais sobre o que blocks realmente são. Dê uma olhada:
@@ -174,7 +175,7 @@ callbacks(:starting => Proc.new { puts "Starting" },
 
 # Block: Seu método está quebrando um Acima temos como a maioria das linguagens lida com closures, e é exatamente o mesmo que enviar um block. No entanto, se você pensou que isso não parece com o “jeito Ruby”, eu vou ter que concordar. A razão acima é exatamente o porquê de o Ruby ter blocos, e isso é para permanecer de acordo com a familiar sintaxe de conclusão “end”.
 
-Se esse é o caso, por que não usar somente blocks? Bem, a resposta é simples, e se nós quisermos passar duas ou mais closures para um método? Se esse é o caso, blocks rapidamente se tornam muito limitados. No entanto, ao ter Procs, podemos fazer algo como:
+# Se esse é o caso, por que não usar somente blocks? Bem, a resposta é simples, e se nós quisermos passar duas ou mais closures para um método? Se esse é o caso, blocks rapidamente se tornam muito limitados. No entanto, ao ter Procs, podemos fazer algo como:
 
 def callbacks(procs)
   procs[:starting].call
