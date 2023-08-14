@@ -2,7 +2,11 @@ result = '' # Variévl igual uma String Vazia
 
 loop do  # Laço de repeticião
   puts result 
-  puts " "
+  
+  if result != '' 
+    puts
+  end
+
   puts 'Selecione uma das seguintes opções abaixo:'
   puts '1 - Descobrir a idade de uma pessoa'
   puts '0 - Sair'

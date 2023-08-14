@@ -298,7 +298,7 @@ puts "O resultado da adição entre os dois números é #{addition}"
 5. Executando o programa:
 
 ```
-> ruby arithmetic_io.rb
+> ruby operations.rb
 ```
 
 Depois de inserir dois valores inteiros, a saída é o resultado da adição entre os dois números.
@@ -468,7 +468,7 @@ for fruit in fruits
 end
 ```
 
-> No exemplo, a instrução `for` percorrerá todos os elementos da lista fruits. Em cada iteração, podemos acessar o elemento atual através da variável fruit.
+> No exemplo, a instrução `for` percorrerá todos os elementos da lista `fruits`. Em cada iteração, podemos acessar o elemento atual através da variável `fruit`.
 
 2. Executando o programa veremos o nome da fruta cada vez que a repetição é executada.
 
@@ -505,7 +505,7 @@ while x < 10
 end
 ```
 
-> Quando este programa é executado, a instrução `while` é repetida enquanto o `valor de x for menor que 10`.
+> Quando este programa é executado, a instrução `while` é repetida enquanto o valor de `x for menor que 10`.
 
 #### Times
 
@@ -527,7 +527,7 @@ end
 
 > Executando o programa percebemos que a estrutura times:
 > Exibe a frase “Estou aprendendo times” 2 vezes
-> Exibe um índice do array name por 3 vezes
+> Exibe um índice do array `name` por 3 vezes
 
 #### Do/While(loop)
 
@@ -545,5 +545,5 @@ loop do
 end
 ```
 
-> Foi criado uma estrutura de repetição que só será parada quando o valor da variável count for igual a 10.
+> Foi criado uma estrutura de repetição que só será parada quando o valor da variável `count` for igual a 10.
 > Execute o programa e veja que ele contará de 1 a 10.

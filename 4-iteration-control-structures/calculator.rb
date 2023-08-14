@@ -2,7 +2,10 @@ result = ''
 
 loop do
   puts result
-  puts ''
+
+  if result != '' 
+    puts
+  end
 
   puts 'Calculadora de terminal.'
   puts 'Selecione a operação desejada:'
