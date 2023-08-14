@@ -45,23 +45,24 @@ Caso possua outra versão, ou então, outro sistema operacional você pode segui
 4. Certifique-se de que o Ruby foi instalado corretamente:
 
 ```
-ruby -v
+> ruby -v
 ```
 
 ## Primeiro Programa
 
-1. Para fazer o primeiro programa ruby vamos criar um arquivo com o nome de `hello-word.rb`. Obs: Os arquivos de código ruby possuem a extensão **.rb**;
+1. Para fazer o primeiro programa ruby vamos criar um arquivo com o nome de `hello.rb`. Obs: Os arquivos de código ruby possuem a extensão **.rb**;
 
 2. Vamos abrir o arquivo e adicionar a seguinte linha:
 
-```
+``` RB
 puts 'Hello, World!'
 ```
 
 3. Para executarmos o programa criado vamos acessar o seu terminal e navegar até o local do arquivo. Em seguida rodar o comando seguinte:
 
 ```
-ruby hello.rb 
+> ruby hello.rb 
+=> Hello World!
 ```
 
 > A instrução **puts** vai imprimir a mensagem ‘Hello, World!’ toda vez que nosso programa for executado.
@@ -81,13 +82,14 @@ Vamos imprimir um **Hello, world!** por linha de comando.
 1. No Terminal ou SSH Console, vamos rodar o comando seguinte:
 
 ```
-irb
+> irb
 ```
 
 2. Vamos digitar o código a seguir e após o enter veremos a mensagem sendo exibida:
 
 ```
-puts 'Hello, World!'
+> puts 'Hello, World!
+=> Hello World!
 ```
 
 ## Tipos de dados
@@ -98,7 +100,7 @@ Os principais tipos de dados são:
 
 ### Integer
 
-Como na matemática, **Inteiro** é o tipo de dado que representa o conjunto de números positivos, negativos e 0.
+Como na matemática, **inteiro** é o tipo de dado que representa o conjunto de números positivos, negativos e 0.
 
 1. Vamos criar um objeto do tipo **Integer** atribuindo à uma variável o seguinte valor inteiro:
 
@@ -108,7 +110,7 @@ Como na matemática, **Inteiro** é o tipo de dado que representa o conjunto de 
 > integer_number = -20
 ```
 
-2. Vamos confirmar que a variável realmente é do tipo **integer**, executando:
+2. Vamos confirmar que a variável realmente é do tipo **Integer**, executando:
 
 ``` 
 > integer_number.class
@@ -119,7 +121,7 @@ Como na matemática, **Inteiro** é o tipo de dado que representa o conjunto de 
 
 Tipo que representa os números reais inexatos.  De forma abreviada, são números decimais, números que contêm ponto flutuante.
 
-1. Vamos criar um objeto tenha o tipo **float** atribuindo a ele um valor decimal:
+1. Vamos criar um objeto tenha o tipo **Float** atribuindo a ele um valor decimal:
 
 > (praticamente tudo no ruby é um objeto).
 
@@ -127,7 +129,7 @@ Tipo que representa os números reais inexatos.  De forma abreviada, são númer
 > float_number = -20.05
 ```
 
-2. Vamos provar que o objeto realmente é do tipo **float**, executando:
+2. Vamos provar que o objeto realmente é do tipo **Float**, executando:
 
 ```
 > float_number.class
@@ -135,7 +137,7 @@ Tipo que representa os números reais inexatos.  De forma abreviada, são númer
 ```
 ### Boolean
 
-Tipo de dado usado para informar a veracidade de algo. Possui apenas dois estados, sendo eles **true** que é uma instância da classe TrueClass e **false** que é uma instância da classe FalseClass.
+Tipo de dado usado para informar a veracidade de algo. Possui apenas dois estados, sendo eles **true** que é uma instância da classe `TrueClass` e **false** que é uma instância da classe `FalseClass`.
  
 ### String
 
@@ -145,7 +147,7 @@ Tipo que representa um texto. Um conjunto de letras, símbolos ou números. Pode
 
 Um tipo que nos permite armazenar uma lista ordenada de dados em um único objeto. Para definir um array você deve utilizar colchetes.
 
-1. Vamos criar um objeto do tipo **array**:
+1. Vamos criar um objeto do tipo **Array**:
 
 ```
 > first_array = [0, 1, 2]
@@ -170,7 +172,7 @@ Um símbolo sempre é definido começando com dois pontos `:` seguido por seu no
 > first_symbol = :ruby_symbol
 ```
 
-2. Vamos vamos descobrir qual posição da memória esse símbolo está salvo, rodando:
+2. Vamos descobrir qual posição da memória esse símbolo está salvo, rodando:
 
 ```
 > first_symbol.object_id
@@ -247,7 +249,7 @@ Para resolver operações matemáticas no ruby contamos com a seguinte lista de 
 
 Essas duas operações manipulam dados, com a diferença que a **entrada** ocorre quando o programa lê dados que podem ter sido recebidos de um teclado, de um arquivo, ou então de outro programa e a **saída** é um dado produzido pelo programa que pode ser exibido em uma tela, enviado para um arquivo ou então para outro programa.
 
-1. Para fazer um programa com entrada e saída de dados, vamos criar um arquivo chamado `entrada_saida.rb` e adicionar o seguinte código:
+1. Para fazer um programa com entrada e saída de dados, vamos criar um arquivo chamado `input-output.rb` e adicionar o seguinte código:
 
 ``` RB
 # saída de dado
@@ -271,14 +273,17 @@ puts "Hello #{name}!"
 
 ```
 > ruby entrada_saida.rb
+=> Digite seu nome: Nath
+=> Hello Nath!
 ```
 
 > O gets recebe os dados como String, mas podemos transformá-los em números inteiros e realizar operações matemáticas com eles como no exemplo a seguir.
 
-4. Vamos criar um arquivo chamado `arithmetic_io.rb` e adicionar o seguinte código:
+4. Vamos criar um arquivo chamado `operations.rb` e adicionar o seguinte código:
 
 ``` RB
 puts 'Soma entre dois números'
+
 print 'Digite o primeiro número inteiro: '
 # .to_i transforma a string em um número inteiro
 number1 = gets.chomp.to_i 
@@ -293,7 +298,7 @@ puts "O resultado da adição entre os dois números é #{addition}"
 5. Executando o programa
 
 ```
-ruby arithmetic_io.rb
+> ruby arithmetic_io.rb
 ```
 
 Depois de inserir dois valores inteiros, a saída é o resultado da adição entre os dois números.
