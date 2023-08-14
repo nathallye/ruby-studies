@@ -1,4 +1,4 @@
-day = 'Sunday' # Domingo
+day = 'Sunday' 
 
 if day == 'Sunday' 
   lunch = 'special'

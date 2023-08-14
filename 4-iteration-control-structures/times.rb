@@ -2,7 +2,7 @@
   puts 'Estou aprendendo times!'
 end
 
-puts ''
+puts '################################################################################'
 
 puts 'Podemos usar também o index no times'
 puts 'Da mesma forma de um array o valor do index começa como 0:'
@@ -10,6 +10,7 @@ puts 'Da mesma forma de um array o valor do index começa como 0:'
   puts index
 end
 
+puts '################################################################################'
 
 puts 'Da mesma forma podemos acessar as posições do array usando o times:'
 names = ['João', 'Alfredo', 'Juca']

@@ -1,9 +1,9 @@
-product_status = 'open' # status_produto = 'escolhida'
+product_status = 'open' 
 
-unless product_status == 'open' # ao menos que o status do produto não seja igual a aberto 
-  check_change = 'can' #verifica_mudança = 'posso'
-else #se não estiver aberto
-  check_change = 'can not' #verifica_mudança = 'não posso'
+unless product_status == 'open' 
+  check_change = 'can' 
+else
+  check_change = 'can not' 
 end
 
 puts "You #{check_change} change the product."

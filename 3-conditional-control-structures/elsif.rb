@@ -1,9 +1,9 @@
-day = 'Holiday' # Feriado
+day = 'Holiday'
 
-if day == 'Sunday' # Domingo
+if day == 'Sunday' 
   lunch = 'special'
-elsif day == 'Holiday' # Feriado
-  lunch = 'later' # mais tarde
+elsif day == 'Holiday' 
+  lunch = 'later' 
 else 
   lunch = 'normal'
 end

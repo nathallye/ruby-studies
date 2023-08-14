@@ -1,10 +1,10 @@
 fruits = ['Maçã', 'Uva', 'Morango']
 
-# a variável de iteração pode sobrescrever outra que esteja fora da estrutura de repetição.
-# ex.: se declararmos:
+# a variável de interação pode sobrescrever outra que esteja fora da estrutura de repetição.
+# ex.: se declararmos
 # fruit = 'alguma coisa' 
-# essa variável vai ser sobrescrita pela variável de iteração com o mesmo nome
-fruit = 'Pera'
+# essa variável vai ser sobrescrita pela variável de interação com o mesmo nome
+fruit = 'Laranja'
 
 for fruit in fruits # percorre os elementos do arrays
   puts fruit

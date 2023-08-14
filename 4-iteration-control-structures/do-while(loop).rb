@@ -1,4 +1,5 @@
 count = 1
+
 loop do 
   puts count
   # O loop vai parar quando a condição for verdadeira
