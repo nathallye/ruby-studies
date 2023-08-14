@@ -12,7 +12,7 @@ https = Net::HTTP.new('reqres.in', 443) # **construiu** um objeto **Net::HTTP** 
 
 https.use_ssl = true # Para fazer chamadas https, informamos que é uma requisição que utiliza o certificado ssl com o método **use_ssl = true**
 
-response = https.get("/api/users") # get para o caminho **api/users(o path que queremos chamar**
+response = https.get("/api/users") # get para o caminho **api/users(o path que queremos chamar)**
 
 puts response.code # Exibir o código da resposta
 puts response.message # Exibir o status/message 
