@@ -15,13 +15,12 @@ numbers.push(gets.chomp.to_i)
 
 # NISSO: 
 3.times do 
-  print "Digie o #{i}° número: "
+  print "Digite o #{i}° número: "
   numbers.push(gets.chomp.to_i)
   i += 1
 end
 
-puts ''
-puts "O array é: #{numbers}"
+puts "\nO array é: #{numbers}"
 
 puts "E seus números elevados a segunda potência ficam assim:"
 

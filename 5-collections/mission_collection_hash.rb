@@ -12,9 +12,7 @@ puts 'Programa para informar chave e valor do objeto.'
   hash[key] = value
 end
 
-puts ''
-puts "O Hash ficou assim: #{hash}"
-puts ''
+puts "\nO Hash ficou assim: #{hash} \n"
 
 hash.each do |key, value|
   # p key, value
