@@ -1,5 +1,5 @@
-posicoes = {1 => 'Primeiro', 2 => 'Segundo', 3 => 'Terceiro'}
+positions = {1 => 'Primeiro', 2 => 'Segundo', 3 => 'Terceiro'}
 
-posicoes.each do |key, value|
+positions.each do |key, value|
   puts "key: #{key} => value: #{value}"
 end

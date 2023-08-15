@@ -137,7 +137,7 @@ Tipo que representa os números reais inexatos.  De forma abreviada, são númer
 ```
 ### Boolean
 
-Tipo de dado usado para informar a veracidade de algo. Possui apenas dois estados, sendo eles **true** que é uma instância da classe `TrueClass` e **false** que é uma instância da classe `FalseClass`.
+Tipo de dado usado para informar a veracidade de algo. Possui apenas dois states, sendo eles **true** que é uma instância da classe `TrueClass` e **false** que é uma instância da classe `FalseClass`.
  
 ### String
 
@@ -547,3 +547,347 @@ end
 
 > Foi criado uma estrutura de repetição que só será parada quando o valor da variável `count` for igual a 10.
 > Execute o programa e veja que ele contará de 1 a 10.
+
+## Collections
+
+Na programação, **collection** representa um **conjunto de dados semelhantes** em uma única unidade.
+
+**Ex**: Uma pessoa tem uma grande quantidade de livros sobre programação e a fim de guardá-los de forma organizada os colocou dentro de uma caixa com o rótulo “Livros de Programação”.
+Note que a caixa é uma representação dos livros com conteúdo de Programação. Uma collection é exatamente isso, um local onde concentramos uma quantidade de itens semelhantes.
+
+Agora, sempre que essa pessoa precisar rever um livro de programação, ela saberá onde encontrá-lo!
+
+Dois tipos de collections bastante utilizados na linguagem Ruby são `Array` e `Hash`.
+
+### Array
+
+Existem várias maneiras de manipular arrays. Abaixo encontram-se algumas muito úteis para todo programador.
+
+#### Criando um Array
+
+1- Crie um array vazio:
+
+```
+> states = []
+```
+
+> Collections podem ter zero ou mais elementos.
+
+#### Adicionando itens
+
+1- Insirindo um novo item ao array `states`:
+
+```
+> states.push('Espírito Santo')
+```
+
+> O `push` sempre irá adicionar itens de forma sequencial.
+
+2- Também é possível inserir vários elementos de uma só vez:
+
+```
+> states.push('Minas Gerais', 'Rio de Janeiro', 'São Paulo')
+```
+
+3- Vejamos o array `states` com a instrução
+
+```
+> puts states
+=> 
+Espírito Santo
+Minas Gerais
+Rio de Janeiro
+São Paulo
+```
+
+4- Para manter nossa coleção organizada em ordem alfabética ao inserir os itens ‘Acre’ e ‘Amapá’, devemos especificar que eles ocuparão as primeiras posições do array. Para isso contamos com o `insert`:
+
+```
+> states.insert(0, 'Acre', 'Amapá')
+=> ["Acre", "Amapá", "Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
+```
+
+#### Acessando elementos
+
+O item de um array pode ser acessado pelo valor de seu index.
+
+1- Recuperando o segundo elemento do array `states`:
+
+```
+> states[1]
+=> "Amapá"
+```
+
+2- Também podemos acessar índices através de intervalos:
+
+```
+> states[2..5]
+=> ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
+```
+
+> Retorna os itens dos índices 2, 3, 4 e 5.
+>
+> Utilizando números negativos conseguimos recuperar elementos a partir do ultimo item do array, de forma regressiva. O número -1 representa o ultimo elemento.
+
+3- Adquirindo o penultimo elemento de `states`:
+
+```
+> states[-2]
+=> "Rio de Janeiro"
+```
+
+4- Também funciona com intervalos:
+
+```
+> states[-3..-1]
+=> ["Minas Gerais", "Rio de Janeiro", "São Paulo"]
+```
+
+5- Uma forma muito intuitiva e natural de recuperar o primeiro item é usar `first`:
+
+```
+> states.first
+=> "Acre"
+```
+
+#### Obtendo informações
+
+1- Para saber a quantidade de itens em um Array podemos utilizar qualquer uma destas duas instruções:
+
+```
+> states.count
+=> 6
+
+> states.length
+=> 6
+```
+
+2- Descubrindo se o array está vazio:
+
+```
+> states.empty?
+=> false
+```
+
+3- Verificando se um item específico está presente:
+
+```
+> states.include?('São Paulo')
+=> true
+```
+
+> Igual ao `empty`, o `include` também resulta um valor verdadeiro ou falso.
+
+#### Excluindo elementos
+
+1- Removendo um item através de seu índice:
+
+```
+> states.delete_at(2)
+=> "Espírito Santo"
+```
+
+2- Excluindo o último item do array:
+
+```
+> states.pop
+=> "São Paulo"
+```
+
+3- Excluindo o primeiro item do array:
+
+```
+> states.shift
+=> "Acre"
+```
+
+### Hash
+
+#### Novo Hash
+
+1- Criando um hash vazio:
+
+```
+> capitals = Hash.new
+```
+
+2- Um hash também pode ser iniciado com vários pares de chave-valor:
+
+``` 
+> capitals = { acre: 'Rio Branco', sao_paulo: 'São Paulo'}
+=> {:acre=>"Rio Branco", :sao_paulo=>"São Paulo"}
+```
+
+3- A chave de um hash pode ser qualquer tipo de dado:
+
+```
+> hash = {1 => 'Chave do tipo inteiro', true => 'Chave do tipo booleano', [1,2,3] => 'Chave do tipo array'}
+=> {1=>"Chave do tipo inteiro", true=>"Chave do tipo booleano", [1, 2, 3]=>"Chave do tipo array"}
+```
+
+#### Adicionando itens
+
+1- Adicionando um novo item ao hash:
+
+```
+> capitals[:minas_gerais] = "Belo Horizonte"
+```
+
+2- Acessando a capital que acabamos de inserir utilizando sua chave:
+
+```
+> capitals[:minas_gerais]
+=> "Belo Horizonte"
+```
+
+> De forma sucinta, a chave é o index de nossos itens.
+
+3- Para retornar todas as chaves de um hash:
+
+```
+> capitals.keys
+=> [:acre, :sao_paulo, :minas_gerais]
+```
+
+4- Agora, todos os valores de um hash:
+
+```
+> capitals.values
+=> ["Rio Branco", "São Paulo", "Belo Horizonte"]
+```
+
+#### Exclusão
+
+1- Removendo um elemento chave-valor:
+
+```
+> capitals.delete(:acre)
+=> "Rio Branco"
+```
+
+2- Verificando se o hash está vazio:
+
+```
+> capitals.empty?
+=> false
+```
+
+## Iterações
+
+Agora veremos três novas estruturas de repetição utilizadas para trabalhar com `collections`.
+
+### Each
+
+Percorre uma coleção de forma parecida ao `for`, porém, não sobrescrevendo o valor de variáveis fora da estrutura de repetição.
+
+#### Array
+
+1- Vamos adicionar o seguinte código a um programa chamado `each_array.rb`:
+
+``` RB
+names = ['Joãozinho', 'Manoel', 'Juca']
+
+name = 'Leonardo Rocha'
+
+names.each do |name|
+  puts name
+end
+
+puts name
+```
+
+> Ao executar o programa percebemos que não foi alterado o valor da  variável `name`, definida antes da estrutura de repetição.
+
+#### Hash
+
+1- Vamos criar um arquivo chamado `each_hash.rb` com o seguinte código:
+
+``` RB
+positions = {1 => 'Primeiro', 2 => 'Segundo', 3 => 'Terceiro'}
+
+positions.each do |key, value|
+  puts "key: #{key} value: #{value}"
+end
+```
+
+> Em cada vez que a estrutura percorre o hash, o elemento atual é representado por key e value.
+
+### Map
+
+Cria um array baseando-se em valores de outro array existente.
+
+1- Vamos criar um arquivo chamado `map.rb` com o seguinte código:
+
+``` RB
+array = [1, 2, 3, 4]
+
+puts "\n Executando .map multiplicando cada item por 2"
+
+# .map não altera o conteúdo do array original
+new_array = array.map do |element| 
+  element * 2
+end
+
+puts "\n Array Original"
+puts " #{array}"
+
+puts "\n Novo Array"
+puts " #{new_array}"
+```
+
+2- Agora, vamos criar um arquivo chamado `map!.rb` com o seguinte código:
+
+``` RB
+array = [1, 2, 3, 4]
+
+puts "\n Executando .map! multiplicando cada item por 2"
+puts "\n Array Original"
+puts " #{array}"
+
+# .map! a "!" força que o conteúdo do array original seja alterado
+array.map! do |element| 
+  element * 2
+end
+
+puts "\n Array Sobrescrito"
+puts " #{array}"
+```
+
+> Como vimos neste exemplo, podemos forçar que o array original seja alterado utilizando `map!`.
+
+### Select
+
+Realiza uma seleção de elementos presentes em uma collection através de uma condição pré definida. Traz como resultado somente os valores que passam nesta condição.
+
+#### Array
+
+1- Vamos criar um arquivo chamado `select_array.rb` com o seguinte código:
+
+``` RB
+array = [1, 2, 3, 4, 5, 6]
+
+selection = array.select do |element|
+  element >= 4
+end
+
+puts selection
+```
+
+> A condição para que um item do array seja selecionado é que seu valor seja maior ou igual a 4.
+
+#### Hash
+
+1- Vamos criar um arquivo chamado `select_hash.rb` com o seguinte código:
+
+``` RB
+hash = {0 => 'zero', 1 => 'um', 2 => 'dois', 3 => 'tres'}
+
+puts 'Selecionando keys com valor maior que 0'
+selection_key = hash.select do |key, value|
+  key > 0
+end
+
+puts selection_key
+```
+
+> Vejamos que dentro de um `hash` podemos fazer uma seleção por chave ou valor.
