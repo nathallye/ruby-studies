@@ -1156,7 +1156,9 @@ computer.shutdown
 ```
 
 > Neste programa você utilizamos dois pilares da programação orientada a objetos:
+>
 > **Abstração** -> representando o objeto Computer em uma classe.
+>
 > **Encapsulamento** -> dividindo o projeto em pequenas partes.
 
 3- Executeando o programa:
