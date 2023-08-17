@@ -1,20 +1,20 @@
 class Animal 
-  def pular
+  def jump
     puts 'Toing! tóim! bóim! póim!'
   end
   
-  def dormir
+  def rest
     puts 'ZzZzzz!'
   end
 end
   
-class Cachorro < Animal 
-  def latir
+class Dog < Animal 
+  def bark
     puts 'Au Au'
   end
 end
   
-cachorro = Cachorro.new
-cachorro.pular 
-cachorro.dormir
-cachorro.latir
+dog = Dog.new
+dog.jump 
+dog.rest
+dog.bark

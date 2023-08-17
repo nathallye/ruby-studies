@@ -1,9 +1,9 @@
 class Animal 
-  def pular
+  def jump
     puts 'Toing! tóim! bóim! póim!'
   end
-
-  def dormir
+  
+  def rest
     puts 'ZzZzzz!'
   end
 end

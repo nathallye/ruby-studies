@@ -1184,25 +1184,25 @@ end
 
 ``` RB
 class Animal 
- def pular
-   puts 'Toing! tóim! bóim! póim!'
- end
-
- def dormir
-   puts 'ZzZzzz!'
- end
+  def jump
+    puts 'Toing! tóim! bóim! póim!'
+  end
+  
+  def rest
+    puts 'ZzZzzz!'
+  end
 end
-
-class Cachorro < Animal
- def latir
-   puts 'Au Au'
- end
+  
+class Dog < Animal 
+  def bark
+    puts 'Au Au'
+  end
 end
-
-cachorro = Cachorro.new
-cachorro.pular
-cachorro.dormir
-cachorro.latir
+  
+dog = Dog.new
+dog.jump 
+dog.rest
+dog.bark
 ```
 
 ### Poliformismo
@@ -1289,4 +1289,93 @@ Instruments = [Pencil.new, Pen.new, Typewriter.new, Keyboard.new]
 Instruments.each do |instrument|
   instrument.write
 end
+```
+
+### Require
+
+Anteriormente vimos um exemplo de como utilizar `require ‘gem_name’` para carregar arquivos de uma gem e assim poder escrever códigos com funcionalidades desta biblioteca.
+
+Com ele também é possível carregar arquivos ruby.
+
+Para exemplificar como isso acontece vamos criar um projeto onde alguns arquivos conterão apenas uma classe.
+
+1- Dentro da pasta do projeto, vamos criar um arquivo chamado `animal.rb` com o código:
+
+``` RB
+class Animal 
+  def jump
+    puts 'Toing! tóim! bóim! póim!'
+  end
+  
+  def rest
+    puts 'ZzZzzz!'
+  end
+end
+```
+
+2- Feito isso, vamos criar um arquivo com o nome `app.rb` e adicionar a ele o código:
+
+``` RB
+require './animal.rb'
+
+animal = Animal.new
+
+animal.jump
+```
+
+> Podemos notar que no `require`, foi especificado o arquivo que será procurado partindo do caminho relativo a `app.rb`.
+>
+> Quando não estamos trabalhando com gems e queremos carregar um arquivo a partir do caminho onde o código será executado, utilize o `require_relative`.
+
+3- Vamos substituir o código de `app.rb` por:
+
+``` RB
+require_relative 'animal'
+ 
+animal = Animal.new
+animal.jump
+```
+
+> Se o arquivo `animal.rb` estivesse dentro de uma pasta chamada example, o caminho ficaria **‘example/animal’**. Como só existe um arquivo chamado **animal.rb** não é preciso especificar a sua extensão.
+
+4- Agora, vamos criar um arquivo chamado `cachorro.rb` com o código:
+
+``` RB
+class Dog < Animal
+  def bark
+    puts 'Au Au'
+  end
+end
+```
+
+> A classe `Dog` recebe como **herança** a classe `Animal`.
+>
+> Porque o **require_relative** de **animal.rb** não está ai?
+>
+> A resposta é simples:
+>
+> Iremos inicializar a classe **Dog** dentro de **app.rb** e esse arquivo já faz um require_relative de **animal.rb**!
+
+5- Para incluir a inicialização e execução dos métodos da classe `Cachorro` iremos substituir o arquivo de `app.rb` por:
+
+``` RB
+require_relative 'animal' 
+require_relative 'dog'
+
+puts '---Animal qualquer---'
+animal = Animal.new 
+animal.jump
+animal.rest
+
+puts '---Cachorro---'
+dog = Dog.new
+dog.jump
+dog.rest
+dog.bark
+```
+
+6- Vamos executar o programa para ver o resultado:
+
+```
+ruby app.rb
 ```
