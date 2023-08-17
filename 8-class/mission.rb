@@ -1,36 +1,36 @@
-class Esportista
-  def competir
+class Sportsperson
+  def compete
     puts 'Participando de uma competição.'
   end
 end
 
-class JogadorDeFutebol < Esportista
-  def correr
+class SoccerPlayer < Sportsperson
+  def run
     puts 'Correndo atrás da bola.'
   end
 end
 
-class Maratonista < Esportista
-  def correr
-    puts 'Percorrendo o circuito'
+class Marathonist < Sportsperson
+  def run
+    puts 'Percorrendo o circuito.'
   end
 end
 
 =begin
 MUDANDO ISSO:
-jogador = JogadorDeFutebol.new
-jogador.competir
-jogador.correr
+soccerPlayer = SoccerPlayer.new
+soccerPlayer.compete
+soccerPlayer.run
 
-maratonista = Maratonista.new
-maratonista.competir
-maratonista.correr 
+marathonist = Marathonist.new
+marathonist.compete
+marathonist.run 
 =end
 
 # PARA ISSO:
-esportistas = [JogadorDeFutebol.new, Maratonista.new] # Foi criado um Array para salvar as intâncias de cada uma das classes que são herdadas de Esportista
+sportspeople = [SoccerPlayer.new, Marathonist.new]
 
-esportistas.each do |esportista| # Usado o método de iteração each para percorrer o Array esportistas e executar os métodos
-  esportista.competir 
-  esportista.correr
+sportspeople.each do |sportsperson|
+  sportsperson.compete 
+  sportsperson.run
 end

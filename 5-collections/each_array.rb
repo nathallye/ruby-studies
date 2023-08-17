@@ -8,6 +8,5 @@ names.each do |name|
   puts name
 end
 
-puts ''
-print 'Variável name fora do laço de repetição NÃO é sobrescrita pelo ultimo item que passou pela iteração: '
+print "\nAVariável name fora do laço de repetição NÃO é sobrescrita pelo ultimo item que passou pela iteração: "
 puts name

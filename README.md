@@ -1073,3 +1073,218 @@ bundle install
 ```
 
 > Assim, qualquer pessoa envolvida no projeto pode facilmente instalar suas dependências.
+
+## POO
+
+POO (Programação Orientada a Objetos) é um  Paradigma de programação criado para lidar com softwares grandes e complexos. É um conceito seguido não só pelo Ruby, mas também por várias outras linguagens de programação como Java, Python, C++, etc.
+
+Sua estrutura é definida por 04 pilares: `Abstração`, `Encapsulamento`, `Herança` e `Poliformismo`.
+
+- **Abstração**
+
+Ação de abstrair uma entidade do mundo real e transformá-la em uma classe.
+
+- **Encapsulamento**
+
+Ato de dividir um programa em diversas partes tornando-o flexível, fácil de modificar e incluir novas funcionalidades.
+
+- **Herança**
+
+Habilidade de criar uma Classe com características de outra existente. A herança prove o reuso e reaproveitamento de código.
+
+- **Poliformismo**
+
+Capacidade de utilizar um método de diferentes formas para diferentes Objeto.
+
+### Objeto
+
+Por definição, objeto é toda coisa material que pode ser percebida pelos sentidos, como por exemplo um carro, livro, cachorro, caneta, avião e etc.
+
+Na programação um objeto é a representação de um objeto do mundo real.
+
+Todos estes objetos apresentam duas característica em comum: informações e comportamentos.
+
+Ex: Cachorro
+
+**Informações**
+
+- **Raça**: Pastor Alemão
+- **Peso**: 35 Quilos
+- **Idade**: 3 Anos
+
+**Comportamentos**
+
+- **Late**
+- **Come**
+- **Corre** 
+
+> Em POO chamamos as informações de `attributes` e os comportamentos de `methods`.
+
+### Classe
+
+Tendo como exemplo o objeto carro, pense em uma classe como a planta deste carro. Com ela é possível construir vários carros.
+
+Uma classe é como a planta de um objeto.
+
+### Classes no Ruby
+
+Uma classe é definida pela palavra `class` seguida de seu **Nome** e finalizada pela palavra `end`.
+
+O nome de uma classe deve sempre começar com letra maiúscula. Para nomes compostos utilize o padrão `CamelCase`.
+
+1- Vamos criar um arquivo chamado `computer.rb` com o seguinte código:
+
+``` RB
+class Computer
+ def turn_on
+   puts 'Ligando o computador...'
+ end
+ 
+ def shutdown
+   puts 'Desligando o computador...'
+ end
+end
+```
+
+> Criamos a classe do objeto `Computer` com os métodos `turn_on` e `shutdown`.
+
+2- Vamos inicializar um novo objeto `Computer` e depois executar seu comportamento `shutdown` adicionando o seguinte código ao final do arquivo **computer.rb**.
+
+``` RB
+computer = Computer.new
+computer.shutdown
+```
+
+> Neste programa você utilizamos dois pilares da programação orientada a objetos:
+> **Abstração** -> representando o objeto Computer em uma classe.
+> **Encapsulamento** -> dividindo o projeto em pequenas partes.
+
+3- Executeando o programa:
+
+```
+ruby computer.rb
+```
+
+4- Vamos fazer outro teste trocando a instrução `computer.shutdown` por `computer.turn_on`.
+
+### Herança
+
+Para herdar características de outra classe, adicione na frente do nome de uma classe filha o símbolo de menor e depois o nome da classe pai.
+
+Ex:
+
+``` RB
+class ClasseFilha < ClassePai
+end
+```
+
+1- Vamos criar um programa chamado `animal.rb` com o seguinte código:
+
+``` RB
+class Animal 
+ def pular
+   puts 'Toing! tóim! bóim! póim!'
+ end
+
+ def dormir
+   puts 'ZzZzzz!'
+ end
+end
+
+class Cachorro < Animal
+ def latir
+   puts 'Au Au'
+ end
+end
+
+cachorro = Cachorro.new
+cachorro.pular
+cachorro.dormir
+cachorro.latir
+```
+
+### Poliformismo
+
+1- Vamos criar um arquivo chamado `polymorphic.rb` com o seguinte código:
+
+``` RB
+class Instrument
+  def write
+    print 'Escrevendo '
+  end
+end
+ 
+class Pencil < Instrument
+  def write
+    puts 'Escrevendo à Lápis' # Sobrescrevendo o método write da classe pai
+  end
+end
+ 
+class Pen < Instrument
+  def write
+    puts 'Escrevendo com Caneta'
+  end
+end
+
+class Typewriter < Instrument
+  def write
+    super # pega tudo que está dentro do método write da class pai
+    puts 'com a Máquina' # adicionando mais uma instrução
+  end
+end
+
+class Keyboard < Instrument 
+end
+
+pencil = Pencil.new
+pencil.write
+
+pen = Pen.new
+pen.write
+
+typewriter = Typewriter.new
+typewriter.write
+
+keyboard = Keyboard.new
+keyboard.write
+```
+
+> O comportamento do método `write` depende do Objeto que o invoca.
+ 
+- Podemos simplificar as chamadas assim:
+
+``` RB
+class Instrument
+  def write
+    print 'Escrevendo '
+  end
+end
+ 
+class Pencil < Instrument
+  def write
+    puts 'Escrevendo à Lápis'
+  end
+end
+ 
+class Pen < Instrument
+  def write
+    puts 'Escrevendo com Caneta'
+  end
+end
+
+class Typewriter < Instrument
+  def write
+    super 
+    puts 'com a Máquina'
+  end
+end
+
+class Keyboard < Instrument 
+end
+ 
+Instruments = [Pencil.new, Pen.new, Typewriter.new, Keyboard.new]
+# Chamamos o método escrever pra qualquer instrumento
+Instruments.each do |instrument|
+  instrument.write
+end
+```

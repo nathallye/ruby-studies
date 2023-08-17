@@ -1,54 +1,47 @@
-class Instrumento
-  def escrever
-    puts 'Escrevendo '
+class Instrument
+  def write
+    print 'Escrevendo '
   end
 end
  
-class Lapis < Instrumento
-  def escrever
-    puts 'Escrevendo à Lápis' # Sobrescrevendo o método escrever da classe pai
+class Pencil < Instrument
+  def write
+    puts 'Escrevendo à Lápis' # Sobrescrevendo o método write da classe pai
   end
 end
  
-class Caneta < Instrumento
-  def escrever
-    puts 'Escrevendo à Caneta' # Sobrescrevendo o método escrever da classe pai
+class Pen < Instrument
+  def write
+    puts 'Escrevendo com Caneta'
   end
 end
 
-class MaquinaDeEscrever < Instrumento
-  def escrever
-    super # pega tudo que está dentro do método escrever da class pai
-    puts 'com a Máquina'
+class Typewriter < Instrument
+  def write
+    super # pega tudo que está dentro do método write da class pai
+    puts 'com a Máquina' # adicionando mais uma instrução
   end
 end
 
-class Teclado < Instrumento 
-  # Não sobrescreve nenhum método da classe pai
+class Keyboard < Instrument 
 end
-
-lapis = Lapis.new
-lapis.escrever
-
-caneta = Caneta.new
-caneta.escrever
-
-maquina = MaquinaDeEscrever.new
-maquina.escrever
-
-teclado = Teclado.new
-teclado.escrever
 
 =begin
-instrumentos = [Lapis.new, Caneta.new]
-# Chamamos o método escrever pra qualquer instrumento
-Instrumentos.each do |instrumento|
-  Instrumento.escrever
-end
+pencil = Pencil.new
+pencil.write
+
+pen = Pen.new
+pen.write
+
+typewriter = Typewriter.new
+typewriter.write
+
+keyboard = Keyboard.new
+keyboard.write
 =end
 
-#O  comportamento do método escrever depende do Objeto que o invoca.
-
-# OBS.: O Polimorfismo é um dos pilares da POO. 
-# Ele permite executar o mesmo método de diferentes formas para cada objeto.
-
+Instruments = [Pencil.new, Pen.new, Typewriter.new, Keyboard.new]
+# Chamamos o método escrever pra qualquer instrumento
+Instruments.each do |instrument|
+  instrument.write
+end
