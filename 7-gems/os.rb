@@ -1,12 +1,9 @@
-# a gem OS é uma gem para você extrair informações sobre o PC que você está usando (exp: Sistema operacional, quantidade de cores e etc).
-
 # Documentação da gem: https://github.com/rdp/os
-
 # RubyGems para achar novas gems
 
 require 'os' # o primeiro passo é informar que vamos usar essa gem
 
-def my_os  
+def my_os 
   if OS.windows?
     'Windows'
   elsif OS.linux?
@@ -15,7 +12,7 @@ def my_os
     'Osx'
   else
     'Não consegui Identificar'
-  end
+  end
 end
 
 puts "Meu PC possui #{OS.cpu_count} cores, é #{OS.bits} bits e o sistema operacional é #{my_os}."

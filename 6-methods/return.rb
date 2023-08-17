@@ -6,8 +6,6 @@ end
 first_value = 5
 second_value = 3
 
-result = compare(first_value, second_value) # o valor da variável result vai ser o "return/retorno" do método "compare/camparar"
+result = compare(first_value, second_value)
 
 puts "O resultado da comparação é: #{result}."
-
-# OBS.: Vale resaltar que o retorno sempre será a ultima linha de instrução do método

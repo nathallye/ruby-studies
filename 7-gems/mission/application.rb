@@ -1,3 +1,5 @@
+# https://github.com/fnando/cpf_cnpj
+
 require 'cpf_cnpj'
 
 def validation(cpf_number)
@@ -9,7 +11,7 @@ def validation(cpf_number)
 end
 
 print 'Insira seu CPF: '
-cpf_number = gets.chomp.to_i
+cpf_number = gets.chomp
 
 result = validation(cpf_number)
 
