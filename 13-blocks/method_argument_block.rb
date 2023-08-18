@@ -1,19 +1,12 @@
-# Um bloco pode ser passado como  argumento implícito de um método.
-
 def foo
-  yield # Chamada do bloco passada como argumento
+  yield # Chamada do bloco passado como argumento
   yield 
 end
 
 foo { puts "Exec the block" }
-puts ''
+puts "============"
 
-
-
-
-
-# E se o bloco for opcional?
-# O ruby oferece um método chamado **block_given? **para verificar se o bloco foi passado como argumento
+#======================================================
 
 def foo
   if block_given? # Verifica SE um bloco foi passado como parâmetro do método
@@ -25,14 +18,9 @@ end
 
 foo # Sem bloco como parâmentro
 foo { puts "Com parâmetro do tipo bloco"} # com bloco como parâmetro
-puts ''
+puts "============"
 
-
-
-
-
-
-# Outra forma de receber blocos como parâmetro é utilizar o símbolo **&**
+#======================================================
 
 def foo(name, &block) # dica importante: sempre deixar o **&nome_do_bloco** como último parâmetro a ser recebido pelo método
   @name = name
@@ -40,12 +28,9 @@ def foo(name, &block) # dica importante: sempre deixar o **&nome_do_bloco** como
 end
 
 foo('Leonardo') { puts "Hello #{@name}" }
-puts ''
+puts "============"
 
-
-
-
-
+#======================================================
 
 # Também podemos passar um bloco que ocupa várias linhas como parâmetro
 
@@ -57,7 +42,7 @@ def foo(numbers, &block)
   end
 end
 
-numbers = { 2 => 2, 3 => 3, 4 => 4 } # variável numbers do tipo hash 
+numbers = { 2 => 2, 3 => 3, 4 => 4 } 
 
 foo(numbers) do |key, value| # Chamamos a execução desse método, passando numbers como parametros e do para passar os parâmetros do bloco
   puts "#{key} * #{value} = #{key * value}"
