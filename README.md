@@ -1379,3 +1379,210 @@ dog.bark
 ```
 ruby app.rb
 ```
+
+### Escopo das variáveis
+
+As variáveis se dividem em 04 tipos:
+
+- **Variável Local**
+- **Variável Global**
+- **Variável de Classe**
+- **Variável de Instância**
+
+A seguir, veremos características de cada uma:
+
+#### Variável Local
+
+É declarada com a primeira letra de seu nome sendo uma letra `minúscula ou sublinhado`.
+
+Pode ser **acessada apenas onde foi criada**. Por exemplo, se você definir uma variável local dentro de de uma classe ela estará disponível apenas dentro desta classe, se a definiu dentro de um método conseguirá acessá-la apenas dentro deste método e assim por diante.
+
+Exemplo:
+
+``` RB
+class Pub
+  def foo
+    # Pode ser definida como local ou _local
+    local = 'local é acessada apenas dentro deste metodo'
+    puts local
+  end
+
+  def example
+    local # não conseguimos acessar essa variével local aqui, pois ela foi defida dentro de outro método
+  end
+end
+
+pub = Pub.new
+pub.foo
+
+pub.example # dar erro
+```
+
+#### Variável Global
+
+Declarada com o prefixo `$`.
+
+Pode ser **acessada em qualquer lugar do programa**.
+
+Seu uso é **FORTEMENTE DESENCORAJADO** pois além de ser visível em qualquer lugar do código, também pode ser alterada em inúmeros locais ocasionando dificuldades no rastreamento de bugs.
+
+Exemplo:
+
+``` RB
+class Pub
+  def foo
+    $global = 0
+    puts $global
+  end
+end
+ 
+class Baz
+  def qux
+    $global += 1
+    puts $global
+  end
+end
+ 
+pub = Pub.new
+pub.foo
+
+baz = Pub.new
+baz.qux
+baz.qux
+
+puts $global
+```
+
+#### Variável de Classe
+
+É declarada com o prefixo `@@`.
+
+Pode ser acessada em qualquer lugar da classe onde foi declarada e seu valor é **compartilhado** entre todas as **instâncias de sua classe**.
+
+Exemplo:
+
+``` RB
+class User
+  @@user_count = 0
+  
+  def add(name)
+    puts "Usuário #{name} adicionado"
+    @@user_count += 1
+    puts @@user_count
+  end
+end
+
+first_user = User.new
+first_user.add('João')
+
+second_user = User.new
+second_user.add('Mario')
+```
+
+#### Variável de Instância
+
+Seu nome começa com o símbolo `@`.
+
+Semelhante a variável de classe, tendo como única diferença o valor que **não é compartilhado** entre todas as **instâncias de sua classe**.
+
+Exemplo:
+
+``` RB
+class User
+  def add(name)
+    @name = name
+    puts "USUÁRIO adicionado"
+    hello
+  end
+
+  def hello
+    puts "Seja bem vindo, #{@name}!"
+  end
+end
+
+user = User.new
+user.add('João')
+```
+
+### **Atributos**
+
+Como já sabemos objetos possuem informações e comportamentos.
+
+Já vimos como utilizar métodos para representar comportamentos de um objeto. Agora é hora de  aprender como adicionar e recuperar **informações** de um objeto.
+
+1- Para entender melhor, vamos criar um arquivo chamado `atributos.rb` com o código:
+
+``` RB
+class Dog 
+  def name
+    @name
+  end
+ 
+  def name= name
+    @name = name
+  end
+end
+
+dog = Dog.new 
+
+dog.name = 'Marlon'
+
+puts dog.name
+```
+
+> O segundo método recebe um valor e o atribui a variável @name.O primeiro método da classe **Dog **retorna o valor da variável de instância @name. Se a variável ainda não estiver definida, o resultado será nil.
+>
+> Podemos dizer que o primeiro é para recuperar e o segundo para adicionar/alterar uma informação. 
+>
+> Declarar os métodos de um atributo pode ser vantajoso caso queira fazer algo além de definir o valor da variável de instância. De outra forma, existe uma maneira mais fácil de realizar esta operação.  
+
+2- Vamos substituir o código de `atributos.rb` por:
+
+``` RB
+class Dog 
+  attr_accessor :name, :age
+end
+
+
+dog = Dog.new 
+
+dog.name = 'Marlon'
+puts dog.name
+
+dog.age = '1 ano'
+puts dog.age
+```
+
+> O ruby disponibiliza um método chamado `attr_accessor` que cria os métodos var e var= para todos atributos declarados.
+
+### Contrutores
+
+Outra questão importante é que toda vez que a instância de uma classe é criada, o Ruby procura por um método chamado initialize. Você pode criar este método para especificar valores padrões durante a construção da classe.
+
+1- Vamos criar um arquivo chamado `construtor.rb` com o seguinte código:
+
+``` RB
+class Person
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+ 
+  def check
+    puts "Instância da classe iniciada com os valores:"
+    puts "Name = #{@name}"
+    puts "Idade = #{@age}"
+  end
+end
+ 
+person = Person.new('João', 12)
+person.check
+```
+
+> O número de parâmetros utilizados no método initialize é opcional.
+
+2- É possível criar a instância com valores padrões do objeto e executar o método check em apenas uma instrução:
+
+``` RB
+Person.new('João', 12).check
+```

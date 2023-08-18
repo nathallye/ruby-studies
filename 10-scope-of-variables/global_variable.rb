@@ -1,10 +1,4 @@
-# Declarada com o prefixo $.
-
-# Pode ser acessada em qualquer lugar do programa.
-
-# Seu uso é **FORTEMENTE DESENCORAJADO** pois além de ser visível em qualquer lugar do código, também pode ser alterada em inúmeros locais ocasionando dificuldades no rastreamento de bugs.
-
-class Bar
+class Pub
   def foo
     $global = 0 # definimos aqui essa variável
     puts $global
@@ -13,13 +7,13 @@ end
  
 class Baz
   def qux
-    $global += 1 # e consiguimos acessar aqui também
+    $global += 1 # e consiguimos acessar aqui também e incrementar valor a ela
     puts $global
   end
 end
  
-bar = Bar.new
-bar.foo
+pub = Pub.new
+pub.foo
 
 baz = Baz.new
 baz.qux
