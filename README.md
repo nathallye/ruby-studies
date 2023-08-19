@@ -821,17 +821,17 @@ Cria um array baseando-se em valores de outro array existente.
 ``` RB
 array = [1, 2, 3, 4]
 
-puts "\n Executando .map multiplicando cada item por 2"
+puts "\nExecutando .map multiplicando cada item por 2"
 
 # .map não altera o conteúdo do array original
 new_array = array.map do |element| 
   element * 2
 end
 
-puts "\n Array Original"
+puts "\nArray Original"
 puts " #{array}"
 
-puts "\n Novo Array"
+puts "\nNovo Array"
 puts " #{new_array}"
 ```
 
@@ -840,8 +840,8 @@ puts " #{new_array}"
 ``` RB
 array = [1, 2, 3, 4]
 
-puts "\n Executando .map! multiplicando cada item por 2"
-puts "\n Array Original"
+puts "\nExecutando .map! multiplicando cada item por 2"
+puts "\nArray Original"
 puts " #{array}"
 
 # .map! a "!" força que o conteúdo do array original seja alterado
@@ -849,7 +849,7 @@ array.map! do |element|
   element * 2
 end
 
-puts "\n Array Sobrescrito"
+puts "\nArray Sobrescrito"
 puts " #{array}"
 ```
 
@@ -1810,3 +1810,80 @@ end
 Football::Player.info
 VideoGame::Player.info
 ```
+
+### Modules – Mixins
+
+Já vimos uso de herança para que uma classe herde características de outra, porém, de uma forma onde a herança sempre era única. 
+
+Agora, veremos que é possível incluir o código de um módulo em outros locais e além disso, essa forma de compartilhamento permitirá definir heranças multiplas para uma classe. Para melhor entendimento, veja isso na prática a seguir.
+
+1- Vamos criar um programa chamado `mixins.rb` e inserir nele:
+
+``` RB
+module PrintDecorated
+  def print_out(text)
+    decoracao = '#' * 100
+    puts decoracao
+    puts text
+  end
+end
+
+module Legs
+  include PrintDecorated 
+  
+  def frontal_kick
+    print_out 'Chute Frontal'
+  end
+  
+  def side_kick
+    print_out 'Chute Lateral'
+  end
+end
+
+module Arms
+  include PrintDecorated
+  
+  def right_jab
+    print_out 'Jab de direita'
+  end
+  
+  def left_jab
+    print_out 'Jab de esquerda'
+  end
+  
+  def hook
+    print_out 'Gancho'
+  end
+end
+
+class MuayThaiFighter
+  include Legs 
+  include Arms
+end
+
+class BoxingFighter
+  include Arms 
+end
+
+puts 'Lutador de Muay Thai:'
+muayThaiFighter = MuayThaiFighter.new
+muayThaiFighter.frontal_kick
+muayThaiFighter.side_kick
+muayThaiFighter.right_jab
+muayThaiFighter.left_jab
+muayThaiFighter.hook
+
+puts "\nLutador de Box:"
+boxingFighter = BoxingFighter.new
+boxingFighter.right_jab
+boxingFighter.right_jab
+boxingFighter.hook
+```
+
+2 – Vamos executar o programa rodando:
+
+```
+ruby mixins.rb
+```
+
+> Nós criamos um module `PrintDecorated` e incluimos ele nos outros dois modules (Legs e Arms), depois incluimos estes últimos dois modules nas classes LutadorX e LutadorY.

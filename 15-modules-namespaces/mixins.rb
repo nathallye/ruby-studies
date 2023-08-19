@@ -1,61 +1,60 @@
-module ImpressaoDecorada
-  def imprimir(text)
+module PrintDecorated
+  def print_out(text)
     decoracao = '#' * 100 # Para não precisarmos escrever 100x esse simbolo
     puts decoracao
     puts text # Imprimir o texto que foi passado como parâmetro
   end
 end
 
-module Pernas
-  include ImpressaoDecorada # Dentro desse médulo Pernas, vamos incluir o módulo ImpressaoDecorada
-  # Os metodos desse módulo incluído vão estar disponiveis aqui dentro
+module Legs
+  # Dentro desse módulo Legs, vamos incluir o módulo PrintDecorated; Os metodos desse módulo incluído vão estar disponiveis aqui dentro
+  include PrintDecorated 
   
-  def chute_frontal
-    imprimir 'Chute Frontal'
+  def frontal_kick
+    print_out 'Chute Frontal'
   end
   
-  def chute_lateral
-    imprimir 'Chute Lateral'
-  end
-end
-
-module Bracos
-  include ImpressaoDecorada
-  
-  def jab_de_direita
-    imprimir 'Jab de direita'
-  end
-  
-  def jab_de_esquerda
-    imprimir 'Jab de esquerda'
-  end
-  
-  def gancho
-    imprimir 'Gancho'
+  def side_kick
+    print_out 'Chute Lateral'
   end
 end
 
-class LutadorMuayThai # No estilo de luta Muay Thai temos os coportamentos de lutas com Pernas e Braços
-  # Herança multipla. Essa classe herdou todos os métodos dos módulos Pernas e Bracos.
-  include Pernas 
-  include Bracos
+module Arms
+  include PrintDecorated
+  
+  def right_jab
+    print_out 'Jab de direita'
+  end
+  
+  def left_jab
+    print_out 'Jab de esquerda'
+  end
+  
+  def hook
+    print_out 'Gancho'
+  end
 end
 
-class LutadorBoxe # No estilo de luta Box temos o coportamento de lutas com os Braços apenas
-  include Bracos 
+class MuayThaiFighter
+  # Herança multipla. Essa classe herdou todos os métodos dos módulos Legs e Arms.
+  include Legs 
+  include Arms
+end
+
+class BoxingFighter
+  include Arms 
 end
 
 puts 'Lutador de Muay Thai:'
-lutadorm = LutadorMuayThai.new
-lutadorm.chute_frontal
-lutadorm.chute_lateral
-lutadorm.jab_de_direita
-lutadorm.jab_de_esquerda
-lutadorm.gancho
+muayThaiFighter = MuayThaiFighter.new
+muayThaiFighter.frontal_kick
+muayThaiFighter.side_kick
+muayThaiFighter.right_jab
+muayThaiFighter.left_jab
+muayThaiFighter.hook
 
-puts ''
-puts 'Lutador de Box:'
-lutadorb = LutadorBoxe.new
-lutadorb.jab_de_esquerda
-lutadorb.jab_de_esquerda
-lutadorb.gancho
+puts "\nLutador de Box:"
+boxingFighter = BoxingFighter.new
+boxingFighter.right_jab
+boxingFighter.right_jab
+boxingFighter.hook
