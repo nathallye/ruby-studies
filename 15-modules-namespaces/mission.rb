@@ -6,7 +6,7 @@ module Person
     end
     
     def add
-      puts 'Pessoa Jurídica Adicionada'
+      puts 'Pessoa Jurídica Adicionada!'
       puts "Nome: #{@name}"
       puts "CNPJ: #{@cnpj}"
       @cnpj
@@ -20,14 +20,14 @@ module Person
     end
 
     def add
-      puts 'Pessoa Física Adicionada'
+      puts 'Pessoa Física Adicionada!'
       puts "Nome: #{@name}"
       puts "CPF: #{@cpf}"
       return self
     end
 
     def ok
-      puts 'Esta cadastrado'
+      puts 'Está cadastrado!'
     end
   end
 end
