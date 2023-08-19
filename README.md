@@ -1589,9 +1589,9 @@ Person.new('João', 12).check
 
 ### Blocks
 
-Um bloco pode ser entendido como uma função anônima, ou seja, uma função sem nome. É definido entre `do..end` ou `colchetes` e da mesma forma que os métodos que você viu até agora, pode receber parâmetros para sua execução.
+Um bloco pode ser entendido como uma função anônima, ou seja, uma função sem nome. É definido entre `do..end` ou `chaves` e da mesma forma que os métodos que você viu até agora, pode receber parâmetros para sua execução.
 
-Usamos`colchetes - {}` para escrever blocos que ocupam apenas uma linha.
+Usamos`chaves - {}` para escrever blocos que ocupam apenas uma linha.
 
 1- Em um arquivo chamado `block.rb` vamos adicionar o seguinte código:
 
@@ -1692,3 +1692,121 @@ end
 ```
 
 > Ao chamar o bloco passamos os parâmetros que ele precisa para ser executado.
+
+### Lambda
+
+Bastante similar aos blocos com algumas diferenças.
+
+Uma lambda é iniciada com a palavra `lambda`.
+
+1- Vamos criar um arquivo chamado `lambda.rb` com o seguinte código:
+
+``` RB
+first_lambda = lambda { puts "My first lambda"}
+first_lambda.call
+```
+
+> Ela pode ser guardada em uma variável para ser chamada futuramente com o método **call**.
+
+2- Podemos abreviar a declaração de uma lambda usando `->`:
+
+``` RB
+first_lambda = -> { puts "My first lambda"}
+first_lambda.call
+```
+
+3- Uma lambda também pode receber parâmetros para sua execução:
+
+``` RB
+first_lambda = -> (names){ names.each { |name |puts name} }
+
+names = ["João", "Maria", "Pedro"]
+
+first_lambda.call(names)
+```
+
+> Podemos notar, que foi executado um `block` dentro de uma `lambda`.
+
+4- Em lambdas que ocupam várias linhas, **não declaramos a lambda de forma abreviada** e utilizamos o `do..end`:
+
+``` RB
+my_lambda = lambda do |numbers|
+  index = 0
+  puts 'Número atual + Próximo número'
+  numbers.each do |number|
+    return if numbers[index] == numbers.last
+    puts "(#{numbers[index]}) + (#{numbers[index + 1]})"
+    puts numbers[index] + numbers[index + 1]
+    index += 1
+  end
+end
+
+numbers = [1, 2, 3, 4]
+
+my_lambda.call(numbers)
+```
+
+#### Argumentos
+
+1- Diferente de blocks, podemos **passar mais de uma lambda como argumentos** de um método:
+
+``` RB
+def foo(first_lambda, second_lambda)
+  first_lambda.call
+  second_lambda.call
+end
+
+first_lambda = lambda { puts "My first lambda" }
+second_lambda = lambda { puts "My second lambda" }
+
+foo(first_lambda, second_lambda)
+```
+
+### Modules
+
+Um módulo é uma forma de agrupar classes, métodos e constantes. Ele é muito similar a classes, com a diferença de que você não consegue criar um objeto com ele, pois ele não possui um construtor (new).
+
+#### Namespaces
+
+É uma forma de organizar o seu código e evitar colisões de recursos que possuem o mesmo nome. 
+
+1- Vamos criar um programa chamado `namespace-reverse-word.rb` e colocar nele:
+
+``` RB
+module ReverseWorld
+  def self.puts(text)
+    Kernel::puts text.reverse.to_s
+  end
+end
+
+ReverseWorld::puts 'O resultado é'
+```
+
+2- Vamos executar o:
+
+```
+ruby namespace_reverse_word.rb
+```
+
+3- Vamos criar um arquivo chamado `namespaces-player.rb` com o seguinte código:
+
+``` RB
+module Football
+  class Player 
+    def self.info
+      puts 'Precisa de um bom condicionamento físico.'
+    end
+  end
+end
+
+module VideoGame
+  class Player
+    def self.info
+      puts 'Precisa de coordenação motora.'
+    end
+  end
+end
+
+Football::Player.info
+VideoGame::Player.info
+```
