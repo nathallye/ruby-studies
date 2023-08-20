@@ -2244,3 +2244,27 @@ O Ruby conta com uma classe chamada Time para representar datas e horas.
 
 => true
 ```
+
+## Missing Methods
+
+Voltando para o conteúdo envolvendo classes e métodos, conheça agora o método `method_missing`. Ele é utilizado para interceptar chamadas a métodos que não existem.
+
+1- Para entendermos como implementar este método. Iremos criar um arquivo chamado `method_missing.rb` com o seguinte código:
+
+``` RB
+class Fish
+ def method_missing(method_name)
+   puts "Fish don't have #{method_name} behavior"
+ end
+ 
+ def swim
+   puts 'Fish is swimming'
+ end
+end
+ 
+fish = Fish.new
+fish.swim
+fish.walk
+```
+
+> A partir daí podemos controlar como responder este tipo de situação. Quando o método `walk` que não existe é chamado, o método `method_missing` faz uma interceptação. Nele é recebido como parâmetro o nome do método que não existe.
