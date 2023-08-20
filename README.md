@@ -60,8 +60,9 @@ puts 'Hello, World!'
 
 3. Para executarmos o programa criado vamos acessar o seu terminal e navegar até o local do arquivo. Em seguida rodar o comando seguinte:
 
-```
+``` RB
 > ruby hello.rb 
+
 => Hello World!
 ```
 
@@ -87,8 +88,9 @@ Vamos imprimir um **Hello, world!** por linha de comando.
 
 2. Vamos digitar o código a seguir e após o enter veremos a mensagem sendo exibida:
 
-```
+``` RB
 > puts 'Hello, World!
+
 => Hello World!
 ```
 
@@ -105,15 +107,16 @@ Como na matemática, **inteiro** é o tipo de dado que representa o conjunto de 
 1. Vamos criar um objeto do tipo **Integer** atribuindo à uma variável o seguinte valor inteiro:
 
 > (variável é um local onde armazenamos dados que serão reutilizados).
-
-```
+ 
+``` RB
 > integer_number = -20
 ```
 
 2. Vamos confirmar que a variável realmente é do tipo **Integer**, executando:
 
-``` 
+```  RB
 > integer_number.class
+
 => Integer
 ```
 
@@ -125,14 +128,15 @@ Tipo que representa os números reais inexatos.  De forma abreviada, são númer
 
 > (praticamente tudo no ruby é um objeto).
 
-```
+``` RB
 > float_number = -20.05
 ```
 
 2. Vamos provar que o objeto realmente é do tipo **Float**, executando:
 
-```
+``` RB
 > float_number.class
+
 => Float
 ```
 ### Boolean
@@ -149,14 +153,15 @@ Um tipo que nos permite armazenar uma lista ordenada de dados em um único objet
 
 1. Vamos criar um objeto do tipo **Array**:
 
-```
+``` RB
 > first_array = [0, 1, 2]
 ```
 
 2. Em seguida, acessar a terceira posição do nosso array:
 
-```
+``` RB
 > first_array[2]
+
 => 2
 ```
 
@@ -168,31 +173,34 @@ Um símbolo sempre é definido começando com dois pontos `:` seguido por seu no
 
 1. Vamos iniciar um objeto do tipo **Symbol** atribuindo à uma variável o seguinte valor:
 
-```
+``` RB
 > first_symbol = :ruby_symbol
 ```
 
 2. Vamos descobrir qual posição da memória esse símbolo está salvo, rodando:
 
-```
+``` RB
 > first_symbol.object_id
+
 => 2224028
 ```
 
 3. Agora vamos criar outra variável com o mesmo símbolo e veremos que ela aponta para o mesmo endereço na memória:
 
-```
+``` RB
 > second_symbol = :ruby_symbol
 > second_symbol.object_id
 => 2224028
+
 > first_symbol.object_id
 => 2224028
 ```
 
 4. Para confirmar que o objeto é do tipo **Symbol**:
 
-```
+``` RB
 > first_symbol.class
+
 => Symbol
 ```
 
@@ -202,14 +210,15 @@ Tipo que representa uma coleção de dados organizados por chaves únicas e seus
 
 1. Vamos criar um objeto do tipo **Hash** adicionando a uma variável o seguinte valor:
 
-```
+``` RB
 > first_hash = {course: 'ruby', language: 'pt-Br' }
 ```
 
 2. Agora, vamos encontrar o tipo do curso rodando:
 
-```
+``` RB
 > first_hash[:course]
+
 => "ruby"
 ```
 
@@ -219,7 +228,7 @@ No ruby não é preciso definir o tipo de dado antes de atribuir um valor à uma
 
 Um exemplo é que podemos alterar o valor de uma variável diversas vezes e em cada uma delas notar que o tipo de dado também mudou:
 
-```
+``` RB
 > dynamic = 2
 > dynamic.class
 => Integer
@@ -567,7 +576,7 @@ Existem várias maneiras de manipular arrays. Abaixo encontram-se algumas muito 
 
 1- Crie um array vazio:
 
-```
+``` RB
 > states = []
 ```
 
@@ -577,7 +586,7 @@ Existem várias maneiras de manipular arrays. Abaixo encontram-se algumas muito 
 
 1- Insirindo um novo item ao array `states`:
 
-```
+``` RB
 > states.push('Espírito Santo')
 ```
 
@@ -585,14 +594,15 @@ Existem várias maneiras de manipular arrays. Abaixo encontram-se algumas muito 
 
 2- Também é possível inserir vários elementos de uma só vez:
 
-```
+``` RB
 > states.push('Minas Gerais', 'Rio de Janeiro', 'São Paulo')
 ```
 
 3- Vejamos o array `states` com a instrução
 
-```
+``` RB
 > puts states
+
 => 
 Espírito Santo
 Minas Gerais
@@ -602,8 +612,9 @@ São Paulo
 
 4- Para manter nossa coleção organizada em ordem alfabética ao inserir os itens ‘Acre’ e ‘Amapá’, devemos especificar que eles ocuparão as primeiras posições do array. Para isso contamos com o `insert`:
 
-```
+``` RB
 > states.insert(0, 'Acre', 'Amapá')
+
 => ["Acre", "Amapá", "Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
 ```
 
@@ -613,15 +624,17 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Recuperando o segundo elemento do array `states`:
 
-```
+``` RB
 > states[1]
+
 => "Amapá"
 ```
 
 2- Também podemos acessar índices através de intervalos:
 
-```
+``` RB
 > states[2..5]
+
 => ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"]
 ```
 
@@ -631,22 +644,25 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 3- Adquirindo o penultimo elemento de `states`:
 
-```
+``` RB
 > states[-2]
+
 => "Rio de Janeiro"
 ```
 
 4- Também funciona com intervalos:
 
-```
+``` RB
 > states[-3..-1]
+
 => ["Minas Gerais", "Rio de Janeiro", "São Paulo"]
 ```
 
 5- Uma forma muito intuitiva e natural de recuperar o primeiro item é usar `first`:
 
-```
+``` RB
 > states.first
+
 => "Acre"
 ```
 
@@ -654,7 +670,7 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Para saber a quantidade de itens em um Array podemos utilizar qualquer uma destas duas instruções:
 
-```
+``` RB
 > states.count
 => 6
 
@@ -664,15 +680,17 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 2- Descubrindo se o array está vazio:
 
-```
+``` RB
 > states.empty?
+
 => false
 ```
 
 3- Verificando se um item específico está presente:
 
-```
+``` RB
 > states.include?('São Paulo')
+
 => true
 ```
 
@@ -682,22 +700,25 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Removendo um item através de seu índice:
 
-```
+``` RB
 > states.delete_at(2)
+
 => "Espírito Santo"
 ```
 
 2- Excluindo o último item do array:
 
-```
+``` RB
 > states.pop
+
 => "São Paulo"
 ```
 
 3- Excluindo o primeiro item do array:
 
-```
+``` RB
 > states.shift
+
 => "Acre"
 ```
 
@@ -707,21 +728,23 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Criando um hash vazio:
 
-```
+``` RB
 > capitals = Hash.new
 ```
 
 2- Um hash também pode ser iniciado com vários pares de chave-valor:
 
-``` 
+``` RB
 > capitals = { acre: 'Rio Branco', sao_paulo: 'São Paulo'}
+
 => {:acre=>"Rio Branco", :sao_paulo=>"São Paulo"}
 ```
 
 3- A chave de um hash pode ser qualquer tipo de dado:
 
-```
+``` RB
 > hash = {1 => 'Chave do tipo inteiro', true => 'Chave do tipo booleano', [1,2,3] => 'Chave do tipo array'}
+
 => {1=>"Chave do tipo inteiro", true=>"Chave do tipo booleano", [1, 2, 3]=>"Chave do tipo array"}
 ```
 
@@ -729,14 +752,15 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Adicionando um novo item ao hash:
 
-```
+``` RB
 > capitals[:minas_gerais] = "Belo Horizonte"
 ```
 
 2- Acessando a capital que acabamos de inserir utilizando sua chave:
 
-```
+``` RB
 > capitals[:minas_gerais]
+
 => "Belo Horizonte"
 ```
 
@@ -744,15 +768,17 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 3- Para retornar todas as chaves de um hash:
 
-```
+``` RB
 > capitals.keys
+
 => [:acre, :sao_paulo, :minas_gerais]
 ```
 
 4- Agora, todos os valores de um hash:
 
-```
+``` RB
 > capitals.values
+
 => ["Rio Branco", "São Paulo", "Belo Horizonte"]
 ```
 
@@ -760,15 +786,17 @@ O item de um array pode ser acessado pelo valor de seu index.
 
 1- Removendo um elemento chave-valor:
 
-```
+``` RB
 > capitals.delete(:acre)
+
 => "Rio Branco"
 ```
 
 2- Verificando se o hash está vazio:
 
-```
+``` RB
 > capitals.empty?
+
 => false
 ```
 
@@ -1957,9 +1985,9 @@ Pode ser realizado através do operador `=~` ou do método `match`.
 1- Retorna um objeto do tipo `MatchData`, contendo todos os resultados do casamento de padrão:
 
 ``` RB
-phrase = "Hellow, how are you?"
+> phrase = "Hellow, how are you?"
 
-match_data = /how/.match(phrase)
+> match_data = /how/.match(phrase)
 
 => #<MatchData "how">
 ```
@@ -1967,10 +1995,10 @@ match_data = /how/.match(phrase)
 2- Em um objeto do tipo `MatchData` você pode, por exemplo, acessar o que vem antes do casamento através do método `pre_match`:
 
 ``` RB
-phrase = "Hellow, how are you?"
+> phrase = "Hellow, how are you?"
 
-match_data = /how/.match(phrase)
-match_data.pre_match
+> match_data = /how/.match(phrase)
+> match_data.pre_match
 
 => "Hellow, "
 ```
@@ -1978,10 +2006,10 @@ match_data.pre_match
 3- Ou acessar o que vem depois do casamento com `post_match`:
 
 ``` RB
-phrase = "Hellow, how are you?"
+> phrase = "Hellow, how are you?"
 
-match_data = /how/.match(phrase)
-match_data.post_match
+> match_data = /how/.match(phrase)
+> match_data.post_match
 
 => " are you?"
 ```
@@ -1993,9 +2021,9 @@ Os símbolos `(, ), [, ], {, }, ., ?, +, *, **`  são `metacharacters`. Eles pos
 1- Caso o padrão que procuramos seja um `metacharacter`, vamos utilizar o símbolo de escape `\` para realizar a busca: 
 
 ``` RB
-/\?/.match('Tudo bem?')
+> /\?/.match('Tudo bem?')
 
-/bem\!\!\!/.match('Muito bem!!!')
+> /bem\!\!\!/.match('Muito bem!!!')
 
 => #<MatchData "bem!!!">
 ```
@@ -2070,3 +2098,67 @@ Os símbolos `(, ), [, ], {, }, ., ?, +, *, **`  são `metacharacters`. Eles pos
 > A vírgula em `{3, }` informa que a repetição pode ocorrer 3 ou mais vezes.
 
 > Conclui-se que a Expressão Regular é uma ferramenta muito poderosa, capaz de identificar qualquer padrão em uma string. https://ruby-doc.org/core-2.5.1/doc/regexp_rdoc.html.
+
+## Math
+
+Math é um módulo nativo para funções matemáticas.
+
+1- Sabendo a raiz quadrada de 64:
+
+``` RB
+> Math.sqrt(64)
+
+=> 8.0
+```
+
+2- Verificando o logaritmo de 10000 na base 10:
+
+``` RB
+> Math.log10(10000)
+
+=> 4.0
+```
+
+3- O logaritmo de 16 na base 2:
+
+``` RB
+> Math.log2(16)
+
+=> 4.0
+```
+
+4- Calculando o cosseno para o ângulo de 30º. Primeiro, vamos transformar o ângulo em um valor radiano:
+
+``` RB
+> radian = 30 * (Math::PI / 180)
+
+=> 0.5235987755982988
+```
+
+Depois vamos utilizar o método `cos`:
+
+``` RB
+> Math.cos(radian)
+
+=> 0.8660254037844387
+```
+
+O módulo Math também fornece o valor de duas constantes bastante utilizadas: `E` e `PI`.
+
+5- Consultando o valor da constante `E`:
+
+``` RB
+> Math::E
+
+=> 2.718281828459045
+```
+
+6- Consultando o valor da constante `PI`:
+
+``` RB
+> Math::PI
+
+=> 3.141592653589793
+```
+
+> Podemos acessar a mais métodos matemáticos do módulo Math através da [documentação](https://ruby-doc.org/core-2.2.0/Math.html).
