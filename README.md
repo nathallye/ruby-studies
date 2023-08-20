@@ -2097,9 +2097,9 @@ Os símbolos `(, ), [, ], {, }, ., ?, +, *, **`  são `metacharacters`. Eles pos
 
 > A vírgula em `{3, }` informa que a repetição pode ocorrer 3 ou mais vezes.
 
-> Conclui-se que a Expressão Regular é uma ferramenta muito poderosa, capaz de identificar qualquer padrão em uma string. https://ruby-doc.org/core-2.5.1/doc/regexp_rdoc.html.
+> Conclui-se que a Expressão Regular é uma ferramenta muito poderosa, capaz de identificar qualquer padrão em uma string. [Documentação](https://ruby-doc.org/core-2.5.1/doc/regexp_rdoc.html).
 
-## Math
+## x
 
 Math é um módulo nativo para funções matemáticas.
 
@@ -2162,3 +2162,85 @@ O módulo Math também fornece o valor de duas constantes bastante utilizadas: `
 ```
 
 > Podemos acessar a mais métodos matemáticos do módulo Math através da [documentação](https://ruby-doc.org/core-2.2.0/Math.html).
+
+## Time
+
+O Ruby conta com uma classe chamada Time para representar datas e horas.
+
+1- Para acessar o **horário atual** vamos executar:
+
+``` RB
+> time = Time.now
+
+=> 2023-08-20 19:19:41 -0300
+```
+
+2- Acessando o **ano** do time com o método `year`:
+
+``` RB
+> time.year
+
+=> 2023
+```
+
+3- Acessando o **mês** do ano com o método `month`:
+
+``` RB
+> time.month
+
+=> 8
+```
+
+4- Acessando o **dia** do mês com o método `day`:
+
+``` RB
+> time.day
+
+=> 20
+```
+
+5- O método `strftime` permite a formatação de uma data em uma forma específica. Essa formatação é feita por diretivas que começam com o símbolo de `%`:
+
+``` RB
+> time.strftime('%d/%m/%y')
+
+=> "20/08/23"
+```
+
+> Significado das diretivas:
+>
+> `%d` -> Dia do mês
+>
+> `%m` -> Mês do ano
+>
+> `%y` -> Ano
+
+6- Verificando se o dia da semana é sábado:
+
+``` RB
+> time.saturday?
+
+=> false
+```
+
+7- Também podemos comparar duas datas. Vamos criar um novo objeto com o horário atual:
+
+``` RB
+> time2 = Time.now
+```
+
+8- Ao comparar as datas de forma completa o resultado será **false**:
+
+``` RB
+> time == time2 
+
+=> false
+```
+
+9- Comparando o ano das duas datas, o resultado será **true**:
+
+``` RB
+> time.year == time2.year 
+
+=> true
+```
