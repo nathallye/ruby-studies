@@ -1928,10 +1928,11 @@ Pode ser realizado através do operador `=~` ou do método `match`.
 
 ##### Operador =~
 
-1- O operador `=~` retorna o offset, ou seja, a distância entre o começo da string até o local onde ocorre o casamento de padrão especificado na expressão.
+1- O operador `=~` retorna o **offset**, ou seja, a **distância entre o começo da string até o local onde ocorre o casamento de padrão** especificado na expressão.
 
 ``` RB
 > /by/ =~ 'ruby'
+
 => 2
 ```
 
@@ -1939,6 +1940,7 @@ Pode ser realizado através do operador `=~` ou do método `match`.
 
 ``` RB
 > 'ruby' =~ /by/
+
 => 2
 ```
 
@@ -1946,6 +1948,7 @@ Pode ser realizado através do operador `=~` ou do método `match`.
 
 ``` RB
 > 'ruby' =~ /rails/
+
 => nil
 ```
 
