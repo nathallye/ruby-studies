@@ -1988,7 +1988,7 @@ match_data.post_match
 
 ### Metacharacters and Escapes
 
-Os símbolos `(, ), [, ], {, }, ., ?, +, \*,**`  são `metacharacters`. Eles possuem um significado quando utilizados em expressões regulares.
+Os símbolos `(, ), [, ], {, }, ., ?, +, *, **`  são `metacharacters`. Eles possuem um significado quando utilizados em expressões regulares.
 
 1- Caso o padrão que procuramos seja um `metacharacter`, vamos utilizar o símbolo de escape `\` para realizar a busca: 
 
@@ -2057,7 +2057,7 @@ Os símbolos `(, ), [, ], {, }, ., ?, +, \*,**`  são `metacharacters`. Eles pos
 => #<MatchData "A343">
 ```
 
-> Ao em vez de digitar \d\d\d podeMOS escrever `\d{3}`.
+> Ao em vez de digitar `\d\d\d` podemos escrever `\d{3}`.
 
 2- Vamos verificar se uma letra foi escrita mantendo o padrão de repetição entre `três ou mais vezes`:
 
