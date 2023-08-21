@@ -2101,7 +2101,7 @@ Os símbolos `(, ), [, ], {, }, ., ?, +, *, **`  são `metacharacters`. Eles pos
 
 ## x
 
-Math é um módulo nativo para funções matemáticas.
+X é um módulo nativo para funções matemáticas.
 
 1- Sabendo a raiz quadrada de 64:
 
@@ -2310,7 +2310,7 @@ Foo.bar
 class Pen
   attr_accessor :color
   def pen_color
-    puts "The color is " + self.color
+    puts "The color is " + self.color + "."
   end
 end
 
@@ -2320,3 +2320,65 @@ pen.pen_color
 ```
 
 > O `self.color` retorna a cor do objeto `pen`.
+
+## Métodos Private e Protected
+
+Por **padrão**, todos os métodos definidos são **públicos**. Isso significa que eles podem ser acessados por qualquer um.
+
+Mas além dos métodos públicos, existem outros dois tipos de métodos chamados `private` e `protected`.
+
+### Private
+
+Método interno de uma classe. Apenas os métodos públicos dessa classe ou de classes descendentes podem chamá-lo.
+
+O `self` é o único receptor de um método private.
+
+1- Vamos definir um método abaixo da palavra `private`, para que ele seja deste tipo:
+
+``` RB
+class Foo
+  def call_private
+    bar
+  end
+
+  private
+
+  def bar
+    puts "private method"
+  end
+end
+
+foo = Foo.new
+
+foo.call_private
+```
+
+> Se tentarmos chamá-lo a partir da instância foo (`foo.bar`), receberemos uma mensagem de erro informando que este método é privado.
+
+### Protected
+
+A **diferença** entre ele e o **private**, é que o método `protected` pode ter como receptor qualquer instância de sua classe.
+
+``` RB
+class Foo
+  def call_protected(instance)
+    instance.bar
+  end
+
+  protected
+
+  def bar
+    puts "protected method"
+  end
+end
+
+instance_1 = Foo.new
+
+instance_2 = Foo.new
+
+instance_1.call_protected(instance_1)
+
+instance_1.call_protected(instance_2)
+```
+
+> Percebemos que podemos utilizar o receptor `instance` para o método `bar` que é do tipo `protected`, por isso, devemos cuidado ao utilizar um método `protected`.
