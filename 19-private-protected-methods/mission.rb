@@ -7,7 +7,7 @@ class Car
   private
 
   def find_km(phrase)
-    /\d{2}km\/h/.match(phrase) # retorno do método private find_km
+    /\d{2,}km\/h/.match(phrase) # retorno do método private find_km
   end
 end
 
