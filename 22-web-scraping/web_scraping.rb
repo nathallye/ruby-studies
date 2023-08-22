@@ -5,15 +5,12 @@ require 'nokogiri'
 require 'net/http'
 
 https = Net::HTTP.new('onebitcode.com', 443) # Para fazer chamadas https, realizamos uma **requisição** para o site do **onebitcode**, porta 443.
-
-https.use_ssl = true # Para fazer chamadas https, informamos que é uma requisição que utiliza o certificado ssl com o método **use_ssl = true**;;;.
+https.use_ssl = true # Para fazer chamadas https, informamos que é uma requisição que utiliza o certificado ssl com o método **use_ssl = true**.
 
 response = https.get("/") # get para o caminho **/**(o path que queremos chamar- que nesse caso é a raiz desse site).
 
 doc = Nokogiri::HTML(response.body) # Utilizamos **Nokogiri::HTML** para **parsear**(analisar os dados)o documento **HTML**. Passamos como argumento a variável response, .body para selecionar o corpo da página html da página solicitada).
-
 h1 = doc.at('h1') # Por fim, fizemos fez uso do método **at** para buscar a tag **h1** dentro do documento...
-
 puts h1.content # Com o h1 em mãos, podemos acessar alguns atributos. Nesse caso usamos o **content** para imprimir o seu conteúdo de h1.
 
 ###############
