@@ -2432,7 +2432,7 @@ end
 ```
 
 > Para adicionar conteúdo sem sobrescrever o que já existe, foi necessário passar o argumento `‘a’`. Este argumento significa `append`, ou seja, acrescentar conteúdo.
-
+>
 > Podemos notar que o método `puts` e `print` tem o mesmo significado, os dois inserem valores ao arquivo, com a diferença de que apenas o `puts` insere uma **nova linha** após a string.
 
 2- Por curiosidade, para saber o tamanho do arquivo gerado podemos abrir o `irb` e executar:
@@ -2452,3 +2452,88 @@ end
 ```
 
 > Após executar este programa, a lista de compras contará apenas com o item batata.
+
+## Chamadas Web
+
+Talvez sua aplicação precise recuperar informações, enviar formulários, ou então, enviar documentos para websites.
+
+Para isso o ruby conta com uma biblioteca chamada `Net::HTTP` que é capaz de realizar chamadas web.
+
+### Requisições Http
+
+1- Vamos criar um arquivo chamado `web_get.rb` com o código:
+
+``` RB
+require 'net/http'
+
+example = Net::HTTP.get('example.com', '/index.html')
+
+File.open('example.html', 'w') do |line|
+ line.puts(example)
+end
+```
+
+> No início, é preciso **adicionar** a biblioteca `Net:HTTP`;
+>
+> Depois é feito uma requisição `HTTP` do tipo `GET` para o domínio `example.com`, com o caminho `/index.html`;
+>
+> É a mesma coisa que entrar no browser e procurar pelo endereço [**http://example.com/index.html**](http://example.com/index.html);
+>
+> Salvamos a **resposta** dentro de uma variável `example` para depois escrevê-la dentro de um arquivo;
+>
+> Quando utilizamos `File.open` para um **arquivo inexistente**, o **ruby detectou** isso e **criou o arquivo** antes de escrever as informações nele.
+
+### Requisições https
+
+Para fazer as próximas requisições **utilizaremos o site** [https://reqres.in](https://reqres.in/).
+
+Ele está preparado para **receber e responder** suas **requisições**, o que facilitará os testes de requisições `https`.
+
+1- Faremos uma requisição `https` utilizando o método `use_ssl`:
+
+``` RB
+require 'net/http'
+
+https = Net::HTTP.new('reqres.in', 443)
+# para fazer chamadas https
+https.use_ssl = true
+
+response = https.get("/api/users")
+# status code
+puts response.code
+# status message
+puts response.message
+# body (json)
+puts  response.body
+```
+
+> **Construimos** um objeto `Net::HTTP` iniciando com os valores de **domínio** e **porta**;
+>
+> Informamos que é uma requisição que utiliza o certificado ssl com o método `use_ssl = true`;
+>
+> Fizemos um `get` para o caminho `api/users`;
+>
+> Por fim exibimos o código da resposta, o status e o corpo da resposta.
+
+2- Agora, iremos criar um arquivo chamado `web_post.rb` com o seguinte código:
+
+``` RB
+require 'net/http'
+
+req = Net::HTTP::Post.new("/api/users")
+req.set_form_data({ name:'Mario', job:'Encanador' })
+
+# para fazer chamadas https
+response = Net::HTTP.start('reqres.in', use_ssl: true) do |http|
+  http.request(req)
+end
+
+puts response.code
+puts response.body
+```
+
+> Inicializamos um objeto `Net::HTTP::Post.new()` passando como argumento o caminho da url;
+>
+> Depois informamos quais são os  parâmetros a serem enviados com o método `set_form_data`;
+>
+> Por fim utilizamos o método `start` para criar uma conexão com o servidor e dentro de um bloco fez a requisição `POST`.

@@ -1,8 +1,6 @@
-# https://ruby-doc.org/stdlib-3.1.0/libdoc/net/http/rdoc/Net/HTTP.html
-
 require 'net/http'
 
-req = Net::HTTP::Post.new("/api/users") # inicializamos um objeto **Net::HTTP::Post.new()** passando como argumento o caminho da url
+req = Net::HTTP::Post.new("/api/users") # Inicializamos um objeto **Net::HTTP::Post.new()** passando como argumento o caminho da url
 req.set_form_data({ name:'Mario', job:'Encanador' }) # Informamos quais são os  parâmetros a serem enviados com o método **set_form_data**
 
 # para fazer chamadas https
