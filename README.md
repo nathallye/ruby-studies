@@ -2382,3 +2382,73 @@ instance_1.call_protected(instance_2)
 ```
 
 > Percebemos que podemos utilizar o receptor `instance` para o método `bar` que é do tipo `protected`, por isso, devemos cuidado ao utilizar um método `protected`.
+
+## Leitura e Escrita de Arquivos
+
+O ruby torna sua vida mais fácil oferecendo uma forma simples para **leitura e escrita** de **arquivos**.
+
+Através de poucas instruções, é possível **ler** o conteúdo, ou então, **escrever** algumas informações dentro de um **arquivo externo**. Isso é feito por meio de uma classe chamada **File**, a qual conta com diversas opções para **manipulação de arquivos**.
+
+### Leitura de arquivo
+
+Para entendermos como ler arquivos, faremos uma lista de compras em um arquivo de texto e depois ler cada item da lista usando um programa Ruby. 
+
+1- Primeiramente, vamos criar um arquivo chamado `list.txt` com o seguinte texto:
+
+```
+morango
+brocolis
+palmito
+```
+
+2- Em seguida, em um arquivo com o nome `read.rb` vamos adicionar o código:
+
+``` RB
+puts '--Lista de Compras--'
+
+file = File.open('list.txt')
+
+file.each do |line|
+  puts line
+end
+```
+
+> Utilizamos o método `open` da classe `File` para acessar o arquivo `list.txt`. Depois o método `each` para percorrer e exibir o conteúdo do arquivo.
+
+### Escrita de Arquivos
+
+Vamos adicionar mais itens à lista de compras e aprenda como **inserir conteúdo** dentro de um arquivo.
+
+1- Vamos criar um arquivo chamado `write.rb` com o código:
+
+``` RB
+File.open('shopping-list.txt', 'a') do |line|
+  line.puts('arroz')
+  line.puts('feijão')
+  line.print('azeite')
+  line.print(' de ')
+  line.print('oliva')
+end
+```
+
+> Para adicionar conteúdo sem sobrescrever o que já existe, foi necessário passar o argumento `‘a’`. Este argumento significa `append`, ou seja, acrescentar conteúdo.
+
+> Podemos notar que o método `puts` e `print` tem o mesmo significado, os dois inserem valores ao arquivo, com a diferença de que apenas o `puts` insere uma **nova linha** após a string.
+
+2- Por curiosidade, para saber o tamanho do arquivo gerado podemos abrir o `irb` e executar:
+
+```
+File.open('shopping-list.txt').size
+```
+
+> O método `size` retorna o tamanho do arquivo em `bytes`.
+
+3- Para substituir o conteúdo desse arquivo vamos utilizar o argumento `‘w’`:
+
+``` RB
+File.open('shopping-list.txt', 'w') do |line|
+  line.puts('batata')
+end
+```
+
+> Após executar este programa, a lista de compras contará apenas com o item batata.
